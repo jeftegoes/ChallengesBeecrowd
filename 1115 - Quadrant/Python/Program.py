@@ -3,10 +3,7 @@ from Quadrant import Quadrant
 
 menu = Menu()
 
-while True:
-    if (menu.show_menu() == True):
-        break
-
+while menu.show_menu():
     coordinates = menu.coordinates
 
     my_quadrant = Quadrant(coordinates)
