@@ -1,4 +1,5 @@
 from Menu import Menu
+from Order import Order
 
 
 class MenuRepository:
@@ -10,21 +11,17 @@ class MenuRepository:
     def set_menu_item(self, menu: Menu) -> None:
         self.menu_itens.append(menu)
 
-    def check_if_itens_exists(self, code: int) -> bool:
+    def check_if_itens_exists(self, order: Order) -> bool:
         for item in self.menu_itens:
-            if (item.code == code):
+            if (order.code == item.code):
                 return True
 
         return False
 
-    def get_total_price(self, codes: list[int]) -> float:
-        total_price = 0.0
-
+    def get_total_price(self, order: Order) -> float:
         for item in self.menu_itens:
-            if (item.code in [int(x) for x in codes]):
-                total_price += item.price
-
-        return total_price
+            if (order.code == item.code):
+                return item.price * order.quantity
 
     def __str__(self) -> str:
         formatText = "{0:<10} {1:<20} {2:<20}\n"

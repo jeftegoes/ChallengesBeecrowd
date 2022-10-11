@@ -1,26 +1,25 @@
-from sqlalchemy import true
-
 from MenuRepository import MenuRepository
+from Order import Order
 
 
 class UserInterface:
     def __init__(self, menu_repository: MenuRepository) -> None:
         self.menu_repository = menu_repository
 
-    def get_user_input(self) -> list[int]:
-        return input(
-            "Inform two codes (valid) included in menu separated by space to buy snacks: ").split()
+    def get_user_input(self) -> Order:
+        result = input(
+            "Inform code (valid) included in menu and quantity, separated by space to buy snacks: ").split()
+        return Order(int(result[0]), int(result[1]))
 
-    def get_total_price(self, codes: list[int]):
-        print(f"Total: $ {self.menu_repository.get_total_price(codes)}")
+    def get_total_price(self, order: Order) -> float:
+        return self.menu_repository.get_total_price(order)
 
     def get_interaction(self) -> bool:
-        codes = self.get_user_input()
+        order = self.get_user_input()
 
-        for code in codes:
-            if (self.menu_repository.check_if_itens_exists(int(code)) == False):
-                print("Invalid code!")
-                return False
+        if (self.menu_repository.check_if_itens_exists(order) == False):
+            print("Invalid code!")
+            return False
 
-        self.get_total_price(codes)
+        print(f"Total: $ {self.get_total_price(order)}")
         return True
