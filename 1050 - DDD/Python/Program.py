@@ -1,5 +1,3 @@
-from ast import Break
-
 from City import City
 from CityRepository import CityRepository
 from UserInterface import UserInterface
