@@ -3,7 +3,7 @@ from product import Product
 
 class ProductRepository:
     def __init__(self) -> None:
-        self.products: Product = []
+        self.products: list[Product] = []
 
     def append(self, product: Product) -> None:
         self.products.append(product)
