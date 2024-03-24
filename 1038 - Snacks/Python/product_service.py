@@ -11,6 +11,3 @@ class ProductService:
             return self.product_repository.get(code)
 
         return None
-
-    def purchase(self, product: Product, quantity: int) -> float:
-        return product.price * quantity

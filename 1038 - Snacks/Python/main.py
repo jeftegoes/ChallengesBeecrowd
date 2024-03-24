@@ -23,9 +23,10 @@ user_interface = UserInterface(product_service)
 user_interface_console = UserInterfaceConsole(user_interface)
 
 while (True):
-    print (product_repository)
-    
+    print(product_repository)
+
     result = user_interface_console.get_user_input_product_and_price()
-    
+
     if (result == "Product not found..."):
+        print("Product not found...")
         break

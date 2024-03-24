@@ -3,3 +3,6 @@ class Product:
         self.code = code
         self.description = description
         self.price = price
+
+    def purchase(self, quantity: int) -> float:
+        return self.price * quantity

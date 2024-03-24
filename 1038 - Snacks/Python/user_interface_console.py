@@ -12,6 +12,9 @@ class UserInterfaceConsole:
         result = self.user_interface.purchase(
             int(code_and_price[0]), int(code_and_price[1]))
 
-        print(result)
+        if result == -1:
+            return "Product not found..."
+
+        print("Total: {0}".format(result))
 
         return result
