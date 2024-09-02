@@ -2,22 +2,16 @@ package com.snack.services;
 
 import com.snack.entities.Product;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Arrays;
 
 public class ProductService {
-    private String filePath = "D:\\ChallengesBeecrowd\\1038 - Snacks\\Java\\src\\main\\resources\\images\\";
-
-    public Product getById(int id) {
-        return null;
-    }
-
-    public boolean exists(int id) {
-        return true;
-    }
+    private String filePath = "D:\\ChallengesBeecrowd\\1038 - Snacks\\Java\\WithoutSpringBoot\\src\\main\\resources\\images\\";
 
     private String getFileExtension(Path path) {
         String filename = path.getFileName().toString();
@@ -48,7 +42,24 @@ public class ProductService {
         return false;
     }
 
-    public void delete(int id, Product product) {
+    public String getImagePathById(int id) {
+        File directory = new File(filePath);
+        File[] matches = directory.listFiles((dir, name) -> name.startsWith(String.valueOf(id)));
+        return Arrays.stream(matches).findFirst().get().getAbsolutePath();
+    }
 
+    public void update(Product product) {
+        remove(product.getId());
+        save(product);
+    }
+
+    public void remove(int id) {
+        Path path = Paths.get(getImagePathById(id));
+
+        try {
+            Files.deleteIfExists(path);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

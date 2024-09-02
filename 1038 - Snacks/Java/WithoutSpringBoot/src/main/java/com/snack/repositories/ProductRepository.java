@@ -36,5 +36,6 @@ public class ProductRepository {
 
         productInDb.setDescription(product.getDescription());
         productInDb.setPrice(product.getPrice());
+        productInDb.setImage(product.getImage());
     }
 }

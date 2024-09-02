@@ -6,8 +6,8 @@ public class Product {
     private float price;
     private String image;
 
-    public Product(int code, String description, float price, String image) {
-        this.id = code;
+    public Product(int id, String description, float price, String image) {
+        this.id = id;
         this.description = description;
         this.price = price;
         this.image = image;
@@ -43,6 +43,10 @@ public class Product {
 
     public void setImage(String imagePath) {
         this.image = imagePath;
+    }
+
+    public float sellProduct(int quantity) {
+        return this.price * quantity;
     }
 
     @Override

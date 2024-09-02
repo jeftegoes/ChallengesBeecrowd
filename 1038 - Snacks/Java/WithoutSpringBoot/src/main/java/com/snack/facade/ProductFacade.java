@@ -35,4 +35,8 @@ public class ProductFacade {
     public void update(int id, Product product) {
         this.productApplication.update(id, product);
     }
+
+    public float sellProduct(int id, int quantity) {
+        return this.productApplication.sellProduct(id, quantity);
+    }
 }

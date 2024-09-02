@@ -34,9 +34,16 @@ public class ProductApplication {
 
     public void remove(int id) {
         this.productRepository.remove(id);
+        this.productService.remove(id);
     }
 
     public void update(int id, Product product) {
         this.productRepository.update(id, product);
+        this.productService.update(product);
+    }
+
+    public float sellProduct(int id, int quantity) {
+        Product product = this.productRepository.getById(id);
+        return product.sellProduct(quantity);
     }
 }
