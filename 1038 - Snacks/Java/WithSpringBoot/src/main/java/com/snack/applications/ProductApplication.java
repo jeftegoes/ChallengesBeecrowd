@@ -3,13 +3,17 @@ package com.snack.applications;
 import com.snack.entities.Product;
 import com.snack.repositories.ProductRepository;
 import com.snack.services.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ProductApplication {
     private ProductRepository productRepository;
     private ProductService productService;
 
+    @Autowired
     public ProductApplication(ProductRepository productRepository, ProductService productService) {
         this.productRepository = productRepository;
         this.productService = productService;

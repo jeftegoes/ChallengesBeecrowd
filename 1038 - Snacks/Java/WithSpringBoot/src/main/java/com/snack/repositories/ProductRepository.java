@@ -1,11 +1,13 @@
 package com.snack.repositories;
 
 import com.snack.entities.Product;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@Repository
 public class ProductRepository {
     private List<Product> products = new ArrayList<Product>();
 

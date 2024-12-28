@@ -1,6 +1,7 @@
 package com.snack.services;
 
 import com.snack.entities.Product;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -8,6 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+@Service
 public class ProductService {
     private String filePath = "D:\\ChallengesBeecrowd\\1038 - Snacks\\Java\\src\\main\\resources\\images\\";
 

@@ -16,19 +16,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/products")
 public class ProductController {
-    private ProductRepository productRepository;
-    ;
-    private ProductService productService;
-    ;
-    private ProductApplication productApplication;
-    ;
     private ProductFacade productFacade;
-    ;
-    public ProductController() {
-        productRepository = new ProductRepository();
-        productService = new ProductService();
-        productApplication = new ProductApplication(productRepository, productService);
-        productFacade = new ProductFacade(productApplication);
+
+    @Autowired
+    public ProductController(ProductFacade productFacade) {
+        this.productFacade = productFacade;
 
         Product product1 = new Product(1, "Hotdog", 4.00f, "F:\\hotdog.jpg");
         Product product2 = new Product(2, "X-Salad", 4.50f, "F:\\xsalad.jpg");
